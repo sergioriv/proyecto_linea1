@@ -1,0 +1,221 @@
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:400,700,400italic);
+
+@import 'iconmapping.scss';
+
+$colorPrimary: #086CA2;
+$colorPrimaryLightest: #ADCEE0;
+$colorPrimaryLighter: #599CC0;
+$colorPrimaryDarker: #06496D;
+$colorPrimaryDarkest: #032436;
+
+$colorSecondary: #B90091;
+$colorSecondaryLightest: #E7AADA;
+$colorSecondaryLighter: #D054B5;
+$colorSecondaryDarker: #7C0062;
+$colorSecondaryDarkest: #3E0030;
+
+$colorComplementary: #FF8B00;
+$colorComplementaryLightest: #FFD8AA;
+$colorComplementaryLighter: #FFB154;
+$colorComplementaryDarker: #AB5E00;
+$colorComplementaryDarkest: #552E00;
+
+
+$colorsBody: $colorPrimaryDarkest, #FFF;
+$colorLink: $colorSecondary;
+$colorLinkVisited: $colorSecondaryDarkest;
+$colorPanel: #F4F4F4;
+$colorsPrimary: #FFF, $colorPrimary;
+$colorsSecondary: #FFF, $colorSecondary;
+$colorsComplementary: #FFF, $colorComplementary;
+$borderRadius: 3.001px;
+$inputButtonHeight: 2em;
+
+
+@mixin colors($text, $background)
+{
+  color: $text;
+  background-color: $background;
+}
+
+@mixin borderRadius($radius)
+{
+	border-radius: $radius;
+}
+
+@mixin border($color)
+{
+	border: 2px solid $color; @include borderRadius($borderRadius);
+}
+
+@mixin clickable()
+{
+	cursor: pointer;
+}
+
+
+body { @include colors($colorsBody...); line-height: 1.4em; }
+body, input, button, textarea { font-family: 'Titillium Web',sans-serif; font-size: 1em; }
+
+h1, h2, h3, h4, h5, h6 { color: $colorPrimary; }
+
+a { color: $colorLink; }
+a:visited { color: $colorLinkVisited; }
+
+
+.ui-widget-content { @include border($colorPrimary); background: nth($colorsBody, 2); }
+.ui-corner-all { @include borderRadius($borderRadius); }
+html .ui-shadow { background: $colorPanel; box-shadow: 0 0 8px rgba(0,0,0,.4); }
+
+.ui-state-disabled { color: $colorPrimaryLightest; }
+.ui-state-focus { box-shadow: 0px 0px 4px $colorPrimary; }
+.ui-state-highlight { background: $colorPrimaryLightest; }
+.ui-state-hover { background: $colorComplementary; }
+.ui-inputfield.ui-state-hover, .ui-selectonemenu.ui-state-hover, .ui-selectonemenu-trigger.ui-state-hover {
+	background: nth($colorsBody, 2);
+}
+.ui-button.ui-state-active { background: $colorSecondary; }
+
+.ui-corner-left { border-radius: $borderRadius 0 0 $borderRadius; }
+.ui-corner-right { border-radius: 0 $borderRadius $borderRadius 0; }
+.ui-corner-tr { border-radius: 0 $borderRadius 0 0; }
+.ui-corner-br { border-radius: 0 0 0 $borderRadius 0; }
+
+html .ui-inputfield {
+	height: $inputButtonHeight; line-height: $inputButtonHeight; padding: 0 0.25em;
+	color: nth($colorsBody, 1); @include border($colorPrimary); box-sizing: border-box;
+}
+html .ui-inputfield::-webkit-input-placeholder { color: $colorPrimaryLightest; }
+
+
+// Checkbox and radio */
+$radioCheckSize: 1.2em;
+html .ui-chkbox .ui-chkbox-box, html .ui-radiobutton .ui-radiobutton-box {
+	width: $radioCheckSize; height: $radioCheckSize; text-align: center;
+	@include colors($colorsPrimary...);
+	@include clickable();
+
+	.ui-icon { line-height: $radioCheckSize; width: 100%; height: 100%; }
+}
+html .ui-chkbox .ui-chkbox-box.ui-state-disabled, html .ui-radiobutton .ui-radiobutton-box.ui-state-disabled {
+	background: $colorPrimaryLightest;
+}
+html .ui-chkbox .ui-chkbox-box {
+	@include borderRadius($borderRadius);
+}
+html .ui-radiobutton .ui-radiobutton-box {
+	@include borderRadius($radioCheckSize);
+}
+html .ui-chkbox .ui-chkbox-box, html .ui-radiobutton .ui-radiobutton-box {
+	span:before { display: block; }
+}
+html .ui-radiobutton-icon { margin: 0; }
+.ui-icon-blank:before { content: '\f061'; opacity: 0; }
+.ui-radiobutton-icon.ui-icon-bullet:before, .ui-chkbox-icon.ui-icon-check:before { content: '\f061'; }
+
+
+// Dropdown */
+.ui-selectonemenu {
+	@include border($colorPrimary); background: nth($colorsBody, 2);
+
+	.ui-icon-triangle-1-s:before { content: "\f107"; }
+	.ui-selectonemenu-trigger .ui-icon { width: 100%; text-align: center; }
+}
+html .ui-selectonemenu .ui-selectonemenu-trigger { width: 1.5em; box-sizing: border-box; }
+
+
+// Button */
+html .ui-button {
+	margin: 0; height: $inputButtonHeight; @include colors($colorsPrimary...); border: 0;
+}
+.ui-button.secondary { @include colors($colorsSecondary...); }
+.ui-button.complementary { @include colors($colorsComplementary...); }
+html {
+	.ui-button-icon-only .ui-icon.fa, .ui-button-text-icon-left .ui-icon.fa, .ui-button-text-icon-right .ui-icon.fa,
+	.ui-button-icon-only .ui-icon, .ui-button-text-icon-left .ui-icon, .ui-button-text-icon-right .ui-icon {
+		margin: 0; top: 0; line-height: $inputButtonHeight; width: 1.5em;
+	}
+	.ui-button-icon-only .ui-icon {
+		position: absolute; left: 0; top: 0; margin: 0; width: 100%; text-align: center;
+	}
+	.ui-button .ui-button-text { line-height: $inputButtonHeight; }
+	.ui-button-text-only .ui-button-text { padding: 0 1em; }
+	.ui-button-text-icon-left .ui-button-text { padding: 0 1em 0 2.3em; }
+	.ui-button-text-icon-right .ui-button-text { padding: 0 2.3em 0 1em; }
+}
+
+
+// Calendar */
+.ui-calendar .ui-inputfield { float: left; }
+html {
+	.ui-datepicker-trigger { margin-left: -4px; }
+	.ui-datepicker .ui-datepicker-prev,
+	.ui-datepicker .ui-datepicker-next { font-family: FontAwesome; text-align: center; @include clickable(); }
+	.ui-datepicker .ui-datepicker-prev span,
+	.ui-datepicker .ui-datepicker-next span { display: none; }
+	.ui-datepicker .ui-datepicker-prev-hover { top: 2px; left: 2px; }
+	.ui-datepicker .ui-datepicker-next-hover { top: 2px; right: 2px; }
+	.ui-timepicker-div dl dd { margin-top: 8px; }
+	.ui-timepicker-div dl dd.ui_tpicker_time { margin-top: 0; }
+}
+
+
+// Spinner */
+html .ui-spinner-input { padding-right: 20px; }
+
+
+// Slider */
+html {
+	.ui-slider { background: $colorPrimaryLightest; }
+	.ui-slider-handle { width: $radioCheckSize; height: $radioCheckSize; background: $colorPrimary; }
+	.ui-slider-horizontal { height: $radioCheckSize; border: 0; }
+	.ui-slider-vertical { width: $radioCheckSize; border: 0; }
+	.ui-slider-horizontal .ui-slider-handle { top: 0; }
+	.ui-slider-vertical .ui-slider-handle { left: 0; }
+}
+
+
+// Data table */
+.ui-datatable-tablewrapper { @include border($colorPrimary); }
+.ui-datatable {
+	.ui-sortable-column-icon { padding-right: .1em; }
+	.ui-widget-content { border: 0; }
+}
+html {
+	.ui-datatable {
+		thead th, tbody td, tfoot td, tfoot th { border: 0; }
+		thead th, tfoot th {
+			position: relative; padding: .25em .5em; @include colors($colorsPrimary...);
+			text-align: left; vertical-align: top;
+		}
+		thead th span { float: left; }
+		.ui-sortable-column-icon { margin: 0 .5em; }
+		.ui-column-filter.ui-inputfield { width: 100%; border: 0; }
+		.ui-datatable-odd { background: $colorPanel; }
+	}
+}
+.ui-paginator {
+	.ui-state-active { background: $colorPrimaryLightest; }
+}
+
+
+// Growl */
+html {
+	.ui-growl-item-container { @include colors($colorsSecondary...); opacity: 1; box-shadow: none; }
+	.ui-growl-image {
+		background: none; font-family: FontAwesome; font-size: 2em; width: 1em; margin-top: .2em; text-align: center;
+	}
+	.ui-growl-icon-close { top: .2em; right: .5em; }
+}
+.ui-growl-image.ui-growl-image-fatal:before { content: "\f1e2"; }
+.ui-growl-image.ui-growl-image-error:before { content: "\f0e7"; }
+.ui-growl-image.ui-growl-image-warn:before { content: "\f071"; }
+.ui-growl-image.ui-growl-image-info:before { content: "\f05a"; }
+
+
+// Icons */
+html .ui-icon { text-indent: 0; }
+.ui-icon:before, .ui-paginator > span:before,
+html .ui-datepicker .ui-datepicker-prev,
+html .ui-datepicker .ui-datepicker-next
+{ font-family: FontAwesome; }

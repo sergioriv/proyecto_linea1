@@ -1,0 +1,47 @@
+html {
+	.ui-icon { text-indent: 0; text-align: center; width: auto; height: auto; }
+	.ui-button { overflow: hidden; }
+	.ui-button-text-icon-left .ui-icon,
+	.ui-button-text-icon-right .ui-icon { top: 0; margin-top: 0; line-height: 1.9em; }
+	.ui-button-text-icon-left .ui-icon { padding-right: .2em; }
+	.ui-button-text-icon-right .ui-icon { padding-left: .2em; }
+	.ui-button-icon-only span { display: block; width: 100%; line-height: 1.8em; }
+	.ui-button-icon-only .ui-icon { top: 0; left: 0; margin: 0; }
+}
+.ui-tree-toggler.ui-icon { width: 1em; height: 1em; }
+
+.ui-icon:before, .ui-paginator > span:before,
+html .ui-datepicker .ui-datepicker-prev,
+html .ui-datepicker .ui-datepicker-next
+{ font-family: FontAwesome; }
+
+@import 'iconmapping.scss';
+
+.ui-chkbox-icon.ui-icon-blank:before { content: "\f00c"; opacity: 0; }
+
+.ui-radiobutton-icon.ui-icon-bullet,
+.ui-radiobutton-icon.ui-icon-blank:before { font-size: .5em; margin: .2em 0 0 0 }
+.ui-radiobutton-icon.ui-icon-blank:before { content: "\f111"; opacity: 0; }
+
+.ui-spinner-button .ui-icon { width: 14px; font-size: .8em; }
+
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next { line-height: 1.8em; text-align: center; }
+html .ui-datepicker .ui-datepicker-prev span,
+html .ui-datepicker .ui-datepicker-next span { display: none; }
+
+html .ui-accordion .ui-accordion-header .ui-icon { left: .8em; margin-top: -11px; }
+
+.ui-carousel-button.ui-icon, .ui-carousel-page-link.ui-icon { width: 14px; }
+
+.ui-separator .ui-icon { width: 8px; text-align: left; }
+
+.ui-menuitem-icon.ui-icon { width: 1em; margin-right: .25em; }
+
+.ui-breadcrumb {
+	ul li a.ui-icon-home {
+		margin: 2px .2em 0 .2em; opacity: .5;
+		span { display: none; }
+	}
+}
+.ui-breadcrumb-chevron.ui-icon { width: 16px; opacity: .5; margin-top: 3px; }
