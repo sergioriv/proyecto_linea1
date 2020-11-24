@@ -4,25 +4,29 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
-                >
+                >    
 
-
-
-    <ui:define name="title">Test Page</ui:define>
 
     <ui:define name="content">
-        <p:dataTable  >
-            <p:column headerText="Id">
-            </p:column>
 
-            <p:column headerText="Year">
-            </p:column>
+        <h:form class="login-panel ui-fluid ui-g">
+            <div class="ui-g-4"></div>
+            <p:panel header="Login" class="ui-g-4 ss_tableCenter" >
+                <h:panelGrid columns="2" cellpadding="5" >
+                    <h:outputLabel for="email" value="Correo" />
+                    <p:inputText id="email" value="##loginBean.email"
+                                 required="true" label="Correo" />
+                    <h:outputLabel for="password" value="Contraseña" />
+                    <p:password id="password" value="##loginBean.password"
+                                required="true" label="Contraseña" />
+                    <f:facet name="footer">
+                        <p:commandButton id="loginButton" value="Iniciar sesión"
+                                         update="messages" />
+                    </f:facet>
+                </h:panelGrid>
+            </p:panel>
+            <div class="ui-g-4"></div>
+        </h:form>
 
-            <p:column headerText="Brand">
-            </p:column>
-
-            <p:column headerText="Color">
-            </p:column>
-        </p:dataTable>
     </ui:define>
 </ui:composition>

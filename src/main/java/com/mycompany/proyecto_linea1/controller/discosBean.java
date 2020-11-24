@@ -5,30 +5,28 @@
  */
 package com.mycompany.proyecto_linea1.controller;
 
-import javax.inject.Named;
+import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
 /**
  *
  * @author Sergio Rivera
  */
-@Named(value = "index")
+@Named(value = "discosBean")
 @RequestScoped
-public class index {
-    
-    private String valor = "valooor";
+public class discosBean implements Serializable {
 
     /**
-     * Creates a new instance of index
+     * Creates a new instance of discosBean
      */
-    public index() {
+    public discosBean() {
     }
-
-    public String getValor() {
-        return valor;
+    
+    public String crear(){
+        
+        String redirect = MenuView.crear_disco();
+        return redirect;
     }
-
-    public void setValor(String valor) {
-        this.valor = valor;
-    }
+    
 }

@@ -1,0 +1,69 @@
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                >    
+
+
+    <ui:define name="content">
+
+        <div class="ss_titulo">Carrito</div>
+        <h:form>
+            <p:panel header="Discos" class="ss_bottomTable" >
+                <p:dataTable var="disco" value="##carritoBean.discos" >
+
+                    <p:column headerText="Artista">
+                        <h:outputText value="##disco.artista.nombre" />
+                    </p:column>
+
+                    <p:column headerText="Genero">
+                        <h:outputText value="##disco.artista.genero" />
+                    </p:column>
+
+                    <p:column headerText="Disco">
+                        <h:outputText value="##disco.nombre" />
+                    </p:column>
+
+                    <p:column headerText="Valor">
+                        <h:outputText value="##disco.valor" />
+                    </p:column>
+
+                    <p:column>
+                        <p:commandButton value="Eliminar" update="messages" />
+                    </p:column>
+
+                </p:dataTable>
+            </p:panel>
+
+            <p:panel header="Canciones" class="ss_bottomTable" >
+                <p:dataTable var="cancion" value="##carritoBean.canciones" >
+
+                    <p:column headerText="Artista">
+                        <h:outputText value="##cancion.artista.nombre" />
+                    </p:column>
+
+                    <p:column headerText="Genero">
+                        <h:outputText value="##cancion.artista.genero" />
+                    </p:column>
+
+                    <p:column headerText="Disco">
+                        <h:outputText value="##cancion.nombre" />
+                    </p:column>
+
+                    <p:column headerText="Valor">
+                        <h:outputText value="##cancion.valor" />
+                    </p:column>
+
+                    <p:column>
+                        <p:commandButton value="Eliminar" update="messages" />
+                    </p:column>
+
+                </p:dataTable>
+            </p:panel>
+
+            <div class="ss_titulo">Total: ##carritoBean.total</div>
+        </h:form>
+    </ui:define>
+</ui:composition>

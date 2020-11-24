@@ -1,0 +1,57 @@
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                >    
+
+
+    <ui:define name="content">
+        
+        <div class="ss_titulo">Artista TOP</div>
+
+        <div class="ui-g">
+            <div class="ui-g-4"></div>
+            <div class="ui-g-4">
+                <div class="ui-g-12" >
+                    <div class="ui-g-4"></div>
+                    <p:graphicImage value="##artistaTopBean.artista.foto" class="ui-g-4" />
+                    <div class="ui-g-4"></div>
+                </div>
+
+                <div class="ui-g-12" >
+                    <div class="ss_titulo">##artistaTopBean.artista.nombre"</div>
+                </div>
+
+                <div class="ui-g-12" >
+                    <div class="ss_titulo">Total ventas<br/>##artistaTopBean.total_ventas"</div>
+                </div>
+
+                <div class="ui-g-12" >
+                    <div class="ui-g-4">Genero</div>
+                    <div class="ui-g-8">
+                        <p:outputLabel value="##artistaTopBean.artista.genero" />
+                    </div>                    
+                </div>
+
+                <div class="ui-g-12" >
+                    <div class="ui-g-4">Nacionalidad</div>
+                    <div class="ui-g-8">
+                        <p:outputLabel value="##artistaTopBean.artista.nacionalidad" />
+                    </div>                    
+                </div>
+
+                <div class="ui-g-12" >
+                    <div class="ui-g-4">Fecha nacimiento</div>
+                    <div class="ui-g-8">
+                        <p:outputLabel value="##artistaTopBean.artista.nacimiento" />
+                    </div>                    
+                </div>
+
+            </div>
+            <div class="ui-g-4"></div>
+        </div>
+
+    </ui:define>
+</ui:composition>

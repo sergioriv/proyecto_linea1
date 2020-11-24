@@ -1,0 +1,62 @@
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                >    
+
+
+    <ui:define name="content">
+
+        <h:form enctype="multipart/form-data">
+            <div class="ss_titulo">Crear Artista</div>
+
+            <div class="ui-fluid p-grid">
+
+                <div class="p-field p-col-4">
+                    <p:fileUpload value="##artistaBean.file" 
+                                  mode="simple"
+                                  skinSimple="true"
+                                  invalidFileMessage="Archivo no valido"
+                                  label="Seleccionar foto"
+                                  accept=".jpg, .png, .jpeg" />
+
+                </div>
+
+                <div class="p-field p-col-4">
+                    <p:outputLabel for="nombre" value="Nombre" />
+                    <p:inputText id="nombre" value="##artistaBean.nombre" required="true" label="Nombre" />
+                </div>
+
+                <div class="p-field p-col">
+                    <p:outputLabel for="genero" value="Genero" />
+                    <p:selectOneMenu id="genero" value="##artistaBean.artista.genero" required="true" label="Genero">
+                        <f:selectItem itemLabel="--Seleccionar--" itemValue="" />
+                        <f:selectItems value="##artistaBean.listGenero" />
+                    </p:selectOneMenu>
+                </div>
+
+                <div class="p-field p-col">
+                    <p:outputLabel for="nacionalidad" value="Genero" />
+                    <p:selectOneMenu id="nacionalidad" value="##artistaBean.artista.nacionalidad" required="true" label="Genero">
+                        <f:selectItem itemLabel="--Seleccionar--" itemValue="" />
+                        <f:selectItems value="##artistaBean.listNacionalidad" />
+                    </p:selectOneMenu>
+                </div>
+
+                <div class="p-field p-col">
+                    <p:outputLabel for="nacimiento" value="Popup:" />
+                    <p:datePicker id="nacimiento" value="##artistaBean.artista.nacimiento" pattern="yyyy/MM/DD" required="true" label="Fecha de nacimiento" />
+                </div>
+
+                <div class="p-field p-col">
+                    <p:commandButton value="Guardar" ajax="false" action="#{artistaBean.save}" />
+                </div>
+
+            </div>
+
+        </h:form>
+
+    </ui:define>
+</ui:composition>

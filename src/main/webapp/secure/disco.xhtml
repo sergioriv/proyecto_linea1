@@ -1,0 +1,44 @@
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                >    
+
+
+    <ui:define name="content">
+
+        <h:form>
+            <div class="ss_titulo">Crear Disco</div>
+
+            <div class="ui-fluid p-grid">
+
+                <div class="p-field p-col">
+                    <p:outputLabel for="artista" value="Artista" />
+                    <p:selectOneMenu id="artista" value="##discoBean.disco.artista" required="true" label="Artista">
+                        <f:selectItem itemLabel="--Seleccionar--" itemValue="" />
+                        <f:selectItems value="##discoBean.listArtista" />
+                    </p:selectOneMenu>
+                </div>
+
+                <div class="p-field p-col-4">
+                    <p:outputLabel for="nombre" value="Nombre" />
+                    <p:inputText id="nombre" value="##discoBean.nombre" required="true" label="Nombre" />
+                </div>
+
+                <div class="p-field p-col-4">
+                    <p:outputLabel for="precio" value="Precio" />
+                    <p:inputNumber id="precio" decimalPlaces="0" minValue="0" required="true" label="Precio" /> <!-- value="##discoBean.precio" -->
+                </div>
+
+                <div class="p-field p-col">
+                    <p:commandButton value="Guardar" action="#{discoBean.save}" />
+                </div>
+
+            </div>
+
+        </h:form>
+
+    </ui:define>
+</ui:composition>

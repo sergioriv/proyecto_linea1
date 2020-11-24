@@ -11,12 +11,7 @@
         <title>Proyecto Linea 1</title>
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
-        <style type="text/css">
-            *{
-                font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-                font-size: 14px;
-            }
-        </style>
+        <h:outputStylesheet library="css" name="styles.css"/>
     </h:head>
     <h:body>
 
@@ -24,7 +19,7 @@
 
         <p:layout fullPage="true">
 
-            <p:layoutUnit position="north" >
+            <p:layoutUnit position="north" collapsed="false" resizable="false" size="50" >
                 <h:form>
                     <p:menubar model="#{menuView.model}" />
                 </h:form>

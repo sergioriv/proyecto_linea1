@@ -4,11 +4,16 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
-                >
+                >    
 
-    <ui:define name="title">Test Page</ui:define>
 
     <ui:define name="content">
-        Page
+
+        <h:form enctype="multipart/form-data">
+
+            <p:barChart model="#{generoTopBean.barModel}" style="width: 100%; height: 500px;"/>
+
+        </h:form>
+
     </ui:define>
 </ui:composition>
