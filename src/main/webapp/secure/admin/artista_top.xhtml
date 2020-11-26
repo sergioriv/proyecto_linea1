@@ -16,36 +16,36 @@
             <div class="ui-g-4">
                 <div class="ui-g-12" >
                     <div class="ui-g-4"></div>
-                    <p:graphicImage value="##artistaTopBean.artista.foto" class="ui-g-4" />
+                        <img width="420px" height="300px" src="../../resources/img/#{artistaTopBean.foto}"/>
                     <div class="ui-g-4"></div>
                 </div>
 
                 <div class="ui-g-12" >
-                    <div class="ss_titulo">##artistaTopBean.artista.nombre"</div>
+                    <div class="ss_titulo">#{artistaTopBean.nombre}</div>
                 </div>
 
                 <div class="ui-g-12" >
-                    <div class="ss_titulo">Total ventas<br/>##artistaTopBean.total_ventas"</div>
+                    <div class="ss_titulo">Total ventas<br/>#{artistaTopBean.totalVentas}</div>
                 </div>
 
                 <div class="ui-g-12" >
                     <div class="ui-g-4">Genero</div>
                     <div class="ui-g-8">
-                        <p:outputLabel value="##artistaTopBean.artista.genero" />
+                        <p:outputLabel value="#{artistaTopBean.genero}" />
                     </div>                    
                 </div>
 
                 <div class="ui-g-12" >
                     <div class="ui-g-4">Nacionalidad</div>
                     <div class="ui-g-8">
-                        <p:outputLabel value="##artistaTopBean.artista.nacionalidad" />
+                        <p:outputLabel value="#{artistaTopBean.nacionalidad}" />
                     </div>                    
                 </div>
 
                 <div class="ui-g-12" >
                     <div class="ui-g-4">Fecha nacimiento</div>
                     <div class="ui-g-8">
-                        <p:outputLabel value="##artistaTopBean.artista.nacimiento" />
+                        <p:outputLabel value="#{artistaTopBean.nacimiento}" />
                     </div>                    
                 </div>
 

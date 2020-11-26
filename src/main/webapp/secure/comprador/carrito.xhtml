@@ -12,58 +12,62 @@
         <div class="ss_titulo">Carrito</div>
         <h:form>
             <p:panel header="Discos" class="ss_bottomTable" >
-                <p:dataTable var="disco" value="##carritoBean.discos" >
+                <p:dataTable var="disco" value="#{carrito.disco}" >
 
                     <p:column headerText="Artista">
-                        <h:outputText value="##disco.artista.nombre" />
+                        <h:outputText value="#{disco.nombreArtista}" />
                     </p:column>
 
                     <p:column headerText="Genero">
-                        <h:outputText value="##disco.artista.genero" />
+                        <h:outputText value="#{disco.generoArtista}" />
                     </p:column>
 
                     <p:column headerText="Disco">
-                        <h:outputText value="##disco.nombre" />
+                        <h:outputText value="#{disco.nombre}" />
                     </p:column>
 
                     <p:column headerText="Valor">
-                        <h:outputText value="##disco.valor" />
+                        <h:outputText value="#{disco.valor}" />
                     </p:column>
 
                     <p:column>
-                        <p:commandButton value="Eliminar" update="messages" />
+                        <p:commandButton value="Eliminar" update="messages" ajax="false" action="#{carrito.deleteDisc(disco)}" onsuccess="location.reload();"/>
                     </p:column>
 
                 </p:dataTable>
             </p:panel>
 
             <p:panel header="Canciones" class="ss_bottomTable" >
-                <p:dataTable var="cancion" value="##carritoBean.canciones" >
+                <p:dataTable var="cancion" value="#{carrito.cancion}" >
 
                     <p:column headerText="Artista">
-                        <h:outputText value="##cancion.artista.nombre" />
+                        <h:outputText value="#{cancion.nombreArtista}" />
                     </p:column>
 
                     <p:column headerText="Genero">
-                        <h:outputText value="##cancion.artista.genero" />
+                        <h:outputText value="#{cancion.generoArtista}" />
                     </p:column>
 
                     <p:column headerText="Disco">
-                        <h:outputText value="##cancion.nombre" />
+                        <h:outputText value="#{cancion.nombreDisco}" />
                     </p:column>
 
+                    <p:column headerText="Nombre">
+                        <h:outputText value="#{cancion.nombre}" />
+                    </p:column>
+                    
                     <p:column headerText="Valor">
-                        <h:outputText value="##cancion.valor" />
+                        <h:outputText value="#{cancion.valor}" />
                     </p:column>
 
                     <p:column>
-                        <p:commandButton value="Eliminar" update="messages" />
+                        <p:commandButton value="Eliminar" update="messages" ajax="false" action="#{carrito.deleteSong(cancion)}"/>
                     </p:column>
 
                 </p:dataTable>
             </p:panel>
-
-            <div class="ss_titulo">Total: ##carritoBean.total</div>
+            <p:commandButton value="Confirmar Compra" update="messages" ajax="false" action="#{carrito.save()}"/>
+            <div class="ss_titulo">Total: $ #{carrito.total}</div>
         </h:form>
     </ui:define>
 </ui:composition>

@@ -4,7 +4,8 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
-                >    
+                    
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">    
 
 
     <ui:define name="content">
@@ -16,24 +17,28 @@
 
                 <div class="p-field p-col">
                     <p:outputLabel for="disco" value="disco" />
-                    <p:selectOneMenu id="disco" value="##cancionBean.cancion.disco" required="true" label="Disco">
+                    <p:selectOneMenu id="disco" value="#{cancionCrear.idDisc}" required="true" label="Disco">
                         <f:selectItem itemLabel="--Seleccionar--" itemValue="" />
-                        <f:selectItems value="##cancionBean.listDisco" />
+                        <c:forEach items="#{cancionCrear.idDisco}" var="id" varStatus="loop">
+                            <f:selectItem itemValue="#{id}" itemLabel="#{cancionCrear.nombreDisco[loop.index]}" />
+                        </c:forEach>
                     </p:selectOneMenu>
                 </div>
 
                 <div class="p-field p-col-4">
                     <p:outputLabel for="nombre" value="Nombre" />
-                    <p:inputText id="nombre" value="##cancionBean.nombre" required="true" label="Nombre" />
+                    <p:inputText id="nombre" value="#{cancionCrear.nombre}" required="true" label="Nombre" validatorMessage="Nombre de la Cancion invalida">
+                        <f:validateRegex pattern="[A-Za-z0-9 ]{1,254}"/>
+                    </p:inputText>
                 </div>
 
                 <div class="p-field p-col-4">
                     <p:outputLabel for="precio" value="Precio" />
-                    <p:inputNumber id="precio" decimalPlaces="0" minValue="0" required="true" label="Precio" /> <!-- value="##cancionBean.precio" -->
+                    <p:inputNumber id="precio" value="#{cancionCrear.valor}" decimalPlaces="0" minValue="0" required="true" label="Precio" />
                 </div>
 
                 <div class="p-field p-col">
-                    <p:commandButton value="Guardar" action="#{cancionBean.save}" />
+                    <p:commandButton value="Guardar" ajax="false" action="#{cancionCrear.save()}" />
                 </div>
 
             </div>

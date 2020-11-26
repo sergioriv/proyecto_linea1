@@ -10,44 +10,44 @@
     <ui:define name="content">
 
         <h:form>
-            <div class="ss_titulo">Canciones
-                <p:commandLink action="#{cancionesBean.crear}" ajax="false" class="ss_linkPlus">
-                    <h:outputText value="Crear" />
-                </p:commandLink>
-            </div>
+            <div class="ss_titulo">Canciones</div>
             
-            <p:dataTable var="cancion" value="##cancionesBean.lista" rows="10"
+            <p:dataTable var="cancion" value="#{cancionLista.cancion}" rows="10"
                          paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
                          rowsPerPageTemplate="5,10,15">
                 
+                <p:column headerText="Foto">
+                    <img width="100px" height="100px" src="../../resources/img/#{cancion.fotoArtista}" />
+                </p:column>
+                
                 <p:column headerText="Artista">
-                    <h:outputText value="##cancion.artista.nombre" />
+                    <h:outputText value="#{cancion.nombreArtista}" />
                 </p:column>
 
                 <p:column headerText="Genero">
-                    <h:outputText value="##cancion.artista.genero" />
+                    <h:outputText value="#{cancion.generoArtista}" />
                 </p:column>
 
                 <p:column headerText="Disco">
-                    <h:outputText value="##cancion.disco.nombre" />
+                    <h:outputText value="#{cancion.nombreDisco}" />
                 </p:column>
 
                 <p:column headerText="Canción">
-                    <h:outputText value="##cancion.nombre" />
+                    <h:outputText value="#{cancion.nombre}" />
                 </p:column>
 
                 <p:column headerText="Valor">
-                    <h:outputText value="##cancion.valor" />
+                    <h:outputText value="#{cancion.valor}" />
                 </p:column>
 
                 <p:column>
-                    <p:commandButton value="Añadir a carrito" update="messages" />
+                    <p:commandButton value="Añadir a carrito" update="messages" action="#{carrito.addSong(cancion)}"/>
                 </p:column>
 
                 <f:facet name="paginatorTopLeft">
-                    <p:commandButton type="button" icon="pi pi-refresh" />
+                    <p:commandButton type="button" icon="pi pi-refresh"/>
                 </f:facet>
 
                 <f:facet name="paginatorBottomRight">
