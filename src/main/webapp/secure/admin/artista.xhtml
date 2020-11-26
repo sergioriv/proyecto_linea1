@@ -15,43 +15,46 @@
             <div class="ui-fluid p-grid">
 
                 <div class="p-field p-col-4">
-                    <p:fileUpload value="##artistaBean.file" 
+                    <p:fileUpload value="#{artistaCrear.foto}" 
                                   mode="simple"
                                   skinSimple="true"
                                   invalidFileMessage="Archivo no valido"
                                   label="Seleccionar foto"
-                                  accept=".jpg, .png, .jpeg" />
+                                  accept=".jpg, .png, .jpeg"/>
 
                 </div>
 
                 <div class="p-field p-col-4">
                     <p:outputLabel for="nombre" value="Nombre" />
-                    <p:inputText id="nombre" value="##artistaBean.nombre" required="true" label="Nombre" />
+                    <p:inputText id="nombre" value="#{artistaCrear.nombre}" required="true" label="Nombre" validatorMessage="Escriba el Nombre Correctamente">
+                        <f:validateRegex pattern="[a-zA-Z ]{2,254}"/>
+                    </p:inputText>
                 </div>
 
                 <div class="p-field p-col">
                     <p:outputLabel for="genero" value="Genero" />
-                    <p:selectOneMenu id="genero" value="##artistaBean.artista.genero" required="true" label="Genero">
+                    <p:selectOneMenu id="genero" value="#{artistaCrear.genero}" required="true" label="Genero">
                         <f:selectItem itemLabel="--Seleccionar--" itemValue="" />
-                        <f:selectItems value="##artistaBean.listGenero" />
+                        <f:selectItems value="#{artistaCrear.generos}" />
                     </p:selectOneMenu>
                 </div>
 
                 <div class="p-field p-col">
-                    <p:outputLabel for="nacionalidad" value="Genero" />
-                    <p:selectOneMenu id="nacionalidad" value="##artistaBean.artista.nacionalidad" required="true" label="Genero">
+                    <p:outputLabel for="nacionalidad" value="Nacionalidad" />
+                    <p:selectOneMenu id="nacionalidad" value="#{artistaCrear.nacionalidad}" required="true" label="Nacionalidad">
                         <f:selectItem itemLabel="--Seleccionar--" itemValue="" />
-                        <f:selectItems value="##artistaBean.listNacionalidad" />
+                        <f:selectItems value="#{artistaCrear.nacionalidades}" />
                     </p:selectOneMenu>
                 </div>
 
                 <div class="p-field p-col">
-                    <p:outputLabel for="nacimiento" value="Popup:" />
-                    <p:datePicker id="nacimiento" value="##artistaBean.artista.nacimiento" pattern="yyyy/MM/DD" required="true" label="Fecha de nacimiento" />
+                    <p:outputLabel for="nacimiento" value="Fecha de Nacimiento:" />
+                    <p:calendar id="nacimiento" value="#{artistaCrear.fechaNacimiento}" required="true" label="Fecha de nacimiento" maxlength="8">
+                    </p:calendar>    
                 </div>
 
                 <div class="p-field p-col">
-                    <p:commandButton value="Guardar" ajax="false" action="#{artistaBean.save}" />
+                    <p:commandButton value="Guardar" ajax="false" action="#{artistaCrear.save()}" />
                 </div>
 
             </div>

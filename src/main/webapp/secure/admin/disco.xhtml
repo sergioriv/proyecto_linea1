@@ -4,7 +4,8 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
-                >    
+                    
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">    
 
 
     <ui:define name="content">
@@ -16,24 +17,29 @@
 
                 <div class="p-field p-col">
                     <p:outputLabel for="artista" value="Artista" />
-                    <p:selectOneMenu id="artista" value="##discoBean.disco.artista" required="true" label="Artista">
+                    <p:selectOneMenu id="artista" value="#{discoCrear.idArt}" required="true" label="Artista">
                         <f:selectItem itemLabel="--Seleccionar--" itemValue="" />
-                        <f:selectItems value="##discoBean.listArtista" />
+                        <c:forEach items="#{discoCrear.idArtista}" var="id" varStatus="loop">
+                            <f:selectItem itemValue="#{id}" itemLabel="#{discoCrear.nombreArtista[loop.index]}" />
+                        </c:forEach>
                     </p:selectOneMenu>
                 </div>
 
                 <div class="p-field p-col-4">
                     <p:outputLabel for="nombre" value="Nombre" />
-                    <p:inputText id="nombre" value="##discoBean.nombre" required="true" label="Nombre" />
+                    <p:inputText id="nombre" value="#{discoCrear.nombre}" required="true" label="Nombre" validatorMessage="Nombre del Disco invalidado">
+                        <f:validateRegex pattern="[A-Za-z0-9 ]{1,254}"/>
+                    </p:inputText>
                 </div>
 
                 <div class="p-field p-col-4">
                     <p:outputLabel for="precio" value="Precio" />
-                    <p:inputNumber id="precio" decimalPlaces="0" minValue="0" required="true" label="Precio" /> <!-- value="##discoBean.precio" -->
+                    <p:inputNumber id="precio" decimalPlaces="0" minValue="0" required="true" label="Precio" value="#{discoCrear.valor}">
+                    </p:inputNumber>    
                 </div>
 
                 <div class="p-field p-col">
-                    <p:commandButton value="Guardar" action="#{discoBean.save}" />
+                    <p:commandButton value="Guardar" ajax="false" action="#{discoCrear.save()}" />
                 </div>
 
             </div>

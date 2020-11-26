@@ -10,36 +10,36 @@
     <ui:define name="content">
         
         <h:form>
-            <div class="ss_titulo">Discos
-                <p:commandLink action="#{discosBean.crear}" ajax="false" class="ss_linkPlus">
-                    <h:outputText value="Crear" />
-                </p:commandLink>
-            </div>
+            <div class="ss_titulo">Discos</div>
 
-            <p:dataTable var="disco" value="##discosBean.lista" rows="10"
+            <p:dataTable var="disco" value="#{discoLista.discos}" rows="10"
                          paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
                          rowsPerPageTemplate="5,10,15">
 
+                <p:column headerText="Foto">
+                    <img width="100px" height="100px" src="../../resources/img/#{disco.fotoArtista}" />
+                </p:column>
+                
                 <p:column headerText="Artista">
-                    <h:outputText value="##disco.artista.nombre" />
+                    <h:outputText value="#{disco.nombreArtista}" />
                 </p:column>
 
                 <p:column headerText="Genero">
-                    <h:outputText value="##disco.artista.genero" />
+                    <h:outputText value="#{disco.generoArtista}" />
                 </p:column>
 
                 <p:column headerText="Nombre">
-                    <h:outputText value="##disco.nombre" />
+                    <h:outputText value="#{disco.nombre}" />
                 </p:column>
 
                 <p:column headerText="Valor">
-                    <h:outputText value="##disco.valor" />
+                    <h:outputText value="#{disco.valor}" />
                 </p:column>
 
                 <p:column>
-                    <p:commandButton value="Añadir a carrito" update="messages" />
+                    <p:commandButton value="Añadir a carrito" update="messages" action="#{carrito.addDisc(disco)}"/>
                 </p:column>
 
                 <f:facet name="paginatorTopLeft">

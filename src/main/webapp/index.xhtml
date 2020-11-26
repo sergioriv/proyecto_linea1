@@ -1,32 +1,40 @@
-<ui:composition template="/WEB-INF/templates/layout.xhtml"
-                xmlns="http://www.w3.org/1999/xhtml"
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
-                >    
-
-
-    <ui:define name="content">
-
+                >
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
         <h:form class="login-panel ui-fluid ui-g">
             <div class="ui-g-4"></div>
             <p:panel header="Login" class="ui-g-4 ss_tableCenter" >
                 <h:panelGrid columns="2" cellpadding="5" >
                     <h:outputLabel for="email" value="Correo" />
-                    <p:inputText id="email" value="##loginBean.email"
-                                 required="true" label="Correo" />
+                    <p:inputText id="email" value="#{ControlLogin.email}"
+                                 required="true" label="Correo">
+                        <f:validateRegex pattern=".+[@].+[.].+" />
+                    </p:inputText>
                     <h:outputLabel for="password" value="Contraseña" />
-                    <p:password id="password" value="##loginBean.password"
-                                required="true" label="Contraseña" />
+                    <p:password id="password" value="#{ControlLogin.contraseña}"
+                                required="true" label="Contraseña">
+                        <f:validateRegex pattern="[?=.*[a-z]].+[?=.*[0-9]]"/>
+                    </p:password>    
                     <f:facet name="footer">
                         <p:commandButton id="loginButton" value="Iniciar sesión"
-                                         update="messages" />
+                                         update="messages" action="#{ControlLogin.logearse()}" ajax="false"/>
                     </f:facet>
                 </h:panelGrid>
             </p:panel>
             <div class="ui-g-4"></div>
         </h:form>
+    </h:body>
+ </html>   
 
-    </ui:define>
-</ui:composition>
+        
+
+
