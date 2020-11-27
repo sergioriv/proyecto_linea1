@@ -23,7 +23,7 @@ public class LoginService {
     
     private final String db = "jdbc:postgresql://localhost:5432/lineaUno";
     private final String usuarioP = "postgres";
-    private final String contrasenaServer = "1234";
+    private final String contrasenaServer = "root";
     
     public Boolean login(String user, String password){
         try {

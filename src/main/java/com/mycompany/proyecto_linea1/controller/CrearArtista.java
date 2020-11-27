@@ -36,7 +36,7 @@ public class CrearArtista implements Serializable{
     private String genero;
     private Date fechaNacimiento;
     private UploadedFile foto;
-    private String ruta = "C:\\Users\\sergi\\OneDrive\\Documentos\\GitHub\\proyecto_linea1\\src\\main\\webapp\\resources\\img\\";
+    private String ruta = "C:\\Users\\Sergio Rivera\\Documents\\NetBeansProjects\\proyecto_linea1\\src\\main\\webapp\\resources\\img\\";
     
     private List<String> generos;
     private List<String> nacionalidades;

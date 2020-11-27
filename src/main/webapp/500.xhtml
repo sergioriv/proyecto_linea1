@@ -11,18 +11,11 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
-    <h:body>
-            Ha ocurrido un error
-        <br />
-        <h:outputText value ="Código error: ${errorHandler.statusCode}" />
-        <br />
-        <h:outputText value ="Mensaje: ${errorHandler.message}" />
-        <br />
-        <h:outputText value ="Tipo Exception ${errorHandler.exception}" />
-        <br />
-        <h:outputText value ="Url ${errorHandler.requestURI}" />
-        <br />
-        <h:outputText value ="Servlet ${errorHandler.servletName}" />
+    <h:body style="text-align: center;">
+        
+        <hr/>
+        <h1>Error interno del servidor</h1>
+        <hr/>
             
     </h:body>
 </html>
